@@ -213,6 +213,9 @@ config USB_F_HID
 config USB_F_PRINTER
 	tristate
 
+config USB_F_ACCESSORY
+	tristate
+
 config USB_F_TCM
 	tristate
 
@@ -471,6 +474,13 @@ config USB_CONFIGFS_F_PRINTER
 
 	  For more information, see Documentation/usb/gadget_printer.rst
 	  which includes sample code for accessing the device file.
+
+config USB_CONFIGFS_F_ACCESSORY
+	bool "Android Open Accessory function"
+	select USB_F_ACCESSORY
+	depends on USB_CONFIGFS
+	help
+	  Android Open Accessory. Device file /dev/usb_accessory
 
 config USB_CONFIGFS_F_TCM
 	bool "USB Gadget Target Fabric"
