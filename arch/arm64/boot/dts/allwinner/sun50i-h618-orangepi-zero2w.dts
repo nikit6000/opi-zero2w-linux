@@ -112,7 +112,7 @@
 		reg = <1>;
 		compatible = "brcm,bcm4329-fmac";
 		interrupt-parent = <&pio>;
-		interrupts = <7 15 IRQ_TYPE_LEVEL_LOW>; /* PG15 */
+		interrupts = <6 15 IRQ_TYPE_LEVEL_LOW>; /* PG15 */
 		interrupt-names = "host-wake";
 	};
 };
@@ -216,9 +216,9 @@
 		compatible = "brcm,bcm4345c5";
 		clocks = <&rtc CLK_OSC32K_FANOUT>;
 		clock-names = "lpo";
-		device-wakeup-gpios = <&pio 7 17 GPIO_ACTIVE_HIGH>; /* PG17 */
-		host-wakeup-gpios = <&pio 7 16 GPIO_ACTIVE_HIGH>; /* PG16 */
-		shutdown-gpios = <&pio 7 19 GPIO_ACTIVE_HIGH>; /* PG19 */
+		device-wakeup-gpios = <&pio 6 17 GPIO_ACTIVE_HIGH>; /* PG17 */
+		host-wakeup-gpios = <&pio 6 16 GPIO_ACTIVE_HIGH>; /* PG16 */
+		shutdown-gpios = <&pio 6 19 GPIO_ACTIVE_HIGH>; /* PG19 */
 		max-speed = <1500000>;
 	};
 };
