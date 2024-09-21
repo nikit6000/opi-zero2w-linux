@@ -222,8 +222,6 @@
 		host-wakeup-gpios = <&pio 6 16 GPIO_ACTIVE_HIGH>; /* PG16 */
 		shutdown-gpios = <&pio 6 19 GPIO_ACTIVE_HIGH>; /* PG19 */
 		max-speed = <1500000>;
-		pinctrl-0 = <&x32clk_fanout_pin>;
-		pinctrl-names = "default";
 	};
 };
 
