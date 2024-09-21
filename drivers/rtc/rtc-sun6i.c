@@ -41,6 +41,10 @@
 #define SUN6I_LOSC_CTRL_ACC_MASK		GENMASK(9, 7)
 
 #define SUN6I_LOSC_CLK_PRESCAL			0x0008
+#define SUN6I_LOSC_CLK_AUTO_CAL			0x000C
+#define SUN6I_LOSC_CLK_AUTO_CAL_16MS	BIT(2)
+#define SUN6I_LOSC_CLK_AUTO_CAL_ENABLE	BIT(1)
+#define SUN6I_LOSC_CLK_AUTO_CAL_SEL_CAL	BIT(0)
 
 /* RTC */
 #define SUN6I_RTC_YMD				0x0010
@@ -266,6 +270,11 @@ static void __init sun6i_rtc_clk_init(struct device_node *node,
 			reg |= SUN6I_LOSC_CTRL_EXT_LOSC_EN;
 	}
 	writel(reg, rtc->base + SUN6I_LOSC_CTRL);
+
+	if (rtc->data->no_ext_losc) {
+		reg = (SUN6I_LOSC_CLK_AUTO_CAL_16MS | SUN6I_LOSC_CLK_AUTO_CAL_ENABLE | SUN6I_LOSC_CLK_AUTO_CAL_SEL_CAL);
+		writel(reg, rtc->base + SUN6I_LOSC_CLK_AUTO_CAL);
+	}
 
 	/* Yes, I know, this is ugly. */
 	sun6i_rtc = rtc;
