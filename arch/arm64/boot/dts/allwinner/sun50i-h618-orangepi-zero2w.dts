@@ -75,8 +75,11 @@
 
 	wifi_pwrseq: wifi-pwrseq {
 		compatible = "mmc-pwrseq-simple";
-		clocks = <&rtc 1>;
+		clocks = <&rtc CLK_OSC32K_FANOUT>;
 		clock-names = "osc32k-out";
+		pinctrl-0 = <&x32clk_fanout_pin>;
+		pinctrl-names = "default";
+		ost-power-on-delay-ms = <200>;
 		reset-gpios = <&pio 6 18 GPIO_ACTIVE_LOW>; /* PG18 */
 		post-power-on-delay-ms = <200>;
 	};
